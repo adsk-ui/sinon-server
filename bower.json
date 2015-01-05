@@ -1,0 +1,22 @@
+{
+  "name": "sinon-server",
+  "main": ["sinon-server.js", "sinon-server-ie.js"],
+  "version": "0.0.0",
+  "homepage": "https://github.com/adsk-ui/sinon-server",
+  "authors": [
+    "Christian Johansen (christian@cjohansen.no)"
+  ],
+  "description": "Just the stand-alone server portion of the sinon library",
+  "keywords": [
+    "sinon",
+    "fake-server"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
