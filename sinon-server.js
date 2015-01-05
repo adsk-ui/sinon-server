@@ -5,13 +5,13 @@
  * @author Contributors: https://github.com/cjohansen/Sinon.JS/blob/master/AUTHORS
  *
  * (The BSD License)
- * 
+ *
  * Copyright (c) 2010-2014, Christian Johansen, christian@cjohansen.no
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
- * 
+ *
  *     * Redistributions of source code must retain the above copyright notice,
  *       this list of conditions and the following disclaimer.
  *     * Redistributions in binary form must reproduce the above copyright notice,
@@ -20,7 +20,7 @@
  *     * Neither the name of Christian Johansen nor the names of his contributors
  *       may be used to endorse or promote products derived from this software
  *       without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -369,49 +369,49 @@ var sinon = (function (formatio) {
         }
     };
 
-    var isNode = typeof module !== "undefined" && module.exports && typeof require == "function";
-    var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
+    // var isNode = typeof module !== "undefined" && module.exports && typeof require == "function";
+    // var isAMD = typeof define === 'function' && typeof define.amd === 'object' && define.amd;
 
-    function makePublicAPI(require, exports, module) {
-        module.exports = sinon;
-        sinon.spy = require("./sinon/spy");
-        sinon.spyCall = require("./sinon/call");
-        sinon.behavior = require("./sinon/behavior");
-        sinon.stub = require("./sinon/stub");
-        sinon.mock = require("./sinon/mock");
-        sinon.collection = require("./sinon/collection");
-        sinon.assert = require("./sinon/assert");
-        sinon.sandbox = require("./sinon/sandbox");
-        sinon.test = require("./sinon/test");
-        sinon.testCase = require("./sinon/test_case");
-        sinon.match = require("./sinon/match");
-    }
+    // function makePublicAPI(require, exports, module) {
+    //     module.exports = sinon;
+    //     sinon.spy = require("./sinon/spy");
+    //     sinon.spyCall = require("./sinon/call");
+    //     sinon.behavior = require("./sinon/behavior");
+    //     sinon.stub = require("./sinon/stub");
+    //     sinon.mock = require("./sinon/mock");
+    //     sinon.collection = require("./sinon/collection");
+    //     sinon.assert = require("./sinon/assert");
+    //     sinon.sandbox = require("./sinon/sandbox");
+    //     sinon.test = require("./sinon/test");
+    //     sinon.testCase = require("./sinon/test_case");
+    //     sinon.match = require("./sinon/match");
+    // }
 
-    if (isAMD) {
-        define(makePublicAPI);
-    } else if (isNode) {
-        try {
-            formatio = require("formatio");
-        } catch (e) {}
-        makePublicAPI(require, exports, module);
-    }
+    // if (isAMD) {
+    //     define(makePublicAPI);
+    // } else if (isNode) {
+    //     try {
+    //         formatio = require("formatio");
+    //     } catch (e) {}
+    //     makePublicAPI(require, exports, module);
+    // }
 
-    if (formatio) {
-        var formatter = formatio.configure({ quoteStrings: false });
-        sinon.format = function () {
-            return formatter.ascii.apply(formatter, arguments);
-        };
-    } else if (isNode) {
-        try {
-            var util = require("util");
-            sinon.format = function (value) {
-                return typeof value == "object" && value.toString === Object.prototype.toString ? util.inspect(value) : value;
-            };
-        } catch (e) {
-            /* Node, but no util module - would be very old, but better safe than
-             sorry */
-        }
-    }
+    // if (formatio) {
+    //     var formatter = formatio.configure({ quoteStrings: false });
+    //     sinon.format = function () {
+    //         return formatter.ascii.apply(formatter, arguments);
+    //     };
+    // } else if (isNode) {
+    //     try {
+    //         var util = require("util");
+    //         sinon.format = function (value) {
+    //             return typeof value == "object" && value.toString === Object.prototype.toString ? util.inspect(value) : value;
+    //         };
+    //     } catch (e) {
+    //         /* Node, but no util module - would be very old, but better safe than
+    //          sorry */
+    //     }
+    // }
 
     return sinon;
 }(typeof formatio == "object" && formatio));
