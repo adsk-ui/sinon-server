@@ -767,10 +767,10 @@ if (typeof sinon == "undefined") {
             this.sendFlag = false;
             if(sinon.FakeXMLHttpRequest.useFilters === true) {
                 var xhrArgs = arguments;
-                var defake = some(FakeXMLHttpRequest.filters,function(filter) {
+                var fake = some(FakeXMLHttpRequest.filters,function(filter) {
                     return filter.apply(this,xhrArgs)
                 });
-                if (defake) {
+                if (!fake) {
                   return sinon.FakeXMLHttpRequest.defake(this,arguments);
                 }
             }
